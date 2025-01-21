@@ -1,0 +1,20 @@
+# dataset config
+field_separator: "\t"  #指定数据集field的分隔符
+seq_separator: " "     #指定数据集中token_seq或者float_seq域里的分隔符
+USER_ID_FIELD: u_id   #指定用户id域
+ITEM_ID_FIELD: course_code    #指定物品id域
+RATING_FIELD: rating   #指定打分rating域
+TIME_FIELD: time_registered  #指定时间域
+NEG_PREFIX: neg_   #指定负采样前缀
+#指定从什么文件里读什么列
+load_col:
+  inter: [u_id, course_code]
+
+# training settings
+k: 5
+shrink: 1
+
+# evalution settings
+split_ratio: [0.8,0.1,0.1] #切分比例
+metrics: ["MRR", "NDCG", "Recall", "Precision"] #评测标准
+topk: [6, 10]

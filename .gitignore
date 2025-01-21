@@ -1,0 +1,8 @@
+/.idea/
+/log/
+/data_process/hmx_selected.csv
+/data_process/hmx_eda.csv
+/data_process/hmx_int_id.csv
+/recommend_run/load_sort_topk.py
+/log_tensorboard/
+/saved/

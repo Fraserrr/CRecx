@@ -1,0 +1,34 @@
+# dataset config
+field_separator: "\t"  #指定数据集field的分隔符
+seq_separator: " "     #指定数据集中token_seq或者float_seq域里的分隔符
+USER_ID_FIELD: u_id   #指定用户id域
+ITEM_ID_FIELD: course_code    #指定物品id域
+RATING_FIELD: rating   #指定打分rating域
+TIME_FIELD: time_registered  #指定时间域
+NEG_PREFIX: neg_   #指定负采样前缀
+#指定从什么文件里读什么列
+load_col:
+  inter: [u_id, course_code, rating, time_registered]
+
+# model config
+embedding_size: 32
+
+# training settings
+epochs: 500  #训练的最大轮数
+learner: adam #使用的pytorch内置优化器
+train_batch_size: 1024 #训练的batch_size
+learning_rate: 0.0001 #学习率
+mlp_hidden_size: [64, 32, 16]
+dropout_prob: 0.0
+training_neg_sample_num: 1 #负采样数目
+eval_step: 2 #每次训练后做evalaution的次数
+stopping_step: 12 #控制训练收敛的步骤数，在该步骤数内若选取的评测标准没有什么变化，就可以提前停止了
+
+# evalution settings
+eval_setting: RO_RS,full #对数据随机重排，设置按比例划分数据集，且使用全排序
+group_by_user: True #是否将一个user的记录划到一个组里，当eval_setting使用RO_RS的时候该项必须是True
+split_ratio: [0.8,0.1,0.1] #切分比例
+metrics: ["MRR", "NDCG", "Recall", "Precision"] #评测标准
+topk: [6] #评测标准使用topk，设置成10评测标准就是["Recall@10", "MRR@10", "NDCG@10", "Hit@10", "Precision@10"]
+valid_metric: MRR@6 #选取哪个评测标准作为作为提前停止训练的标准
+eval_batch_size: 4096 #评测的batch_size
