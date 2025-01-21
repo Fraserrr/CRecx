@@ -114,10 +114,10 @@ for (row, col), value in data_dict.items():
 - 隐式反馈优化方法
   - BPR (Bayesian Personalized Ranking)
   - FISM (Factored Item Similarity Model)
-- 神经网络与深度学习方法
+- 深度矩阵分解方法
   - NeuMF (Neural Matrix Factorization)
   - DMF (Deep Matrix Factorization)
-- 图结构建模方法
+- 图神经网络方法
   - SpectralCF (Spectral Collaborative Filtering)
   - LightGCN (Light Graph Convolution Network)
 
